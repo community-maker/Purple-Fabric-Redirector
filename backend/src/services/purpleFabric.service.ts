@@ -43,6 +43,7 @@ const LIST_AGENTS_QUERY = `query{
       version
       status
       is_public
+      is_private
       modified_date
       agent_type
       is_file_mandatory
@@ -206,14 +207,17 @@ export class PurpleFabricService {
           subCategory: resolveField(asset, ['sub_category']),
           status,
           version: resolveField(asset, ['version']),
-          isPublic: resolveBoolean(asset, ['is_public', 'isPublic']) === true,
+          isPublic: resolveBoolean(asset, ['is_private']) === false,
           assetId,
           assetVersionId,
           iconDataUrl: createImageDataUrl(resolveField(iconDocument ?? {}, ['base64'])),
           chatUrl: buildAgentChatUrl(assetVersionId),
         };
       })
-      .filter((agent): agent is AgentPublic => agent !== null && agent.status === 'PUBLISHED')
+      .filter(
+        (agent): agent is AgentPublic =>
+          agent !== null && agent.status === 'PUBLISHED' && agent.isPublic === true
+      )
       .sort((first, second) => {
         const nameCompare = first.name.localeCompare(second.name);
         if (nameCompare !== 0) return nameCompare;
