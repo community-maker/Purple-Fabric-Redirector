@@ -1,8 +1,6 @@
-import { createApp } from './app';
+import app from './app';
 import { env } from './config/env';
 import { logger } from './utils/logger';
-
-const app = createApp();
 
 const server = app.listen(env.port, () => {
   logger.info(`Agent directory API listening on http://localhost:${env.port}`);
