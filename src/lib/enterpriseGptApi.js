@@ -1,4 +1,6 @@
-const DEFAULT_API_BASE_URL = 'http://localhost:4000/api/v1';
+const DEFAULT_API_BASE_URL = import.meta.env.DEV
+  ? 'http://localhost:4000/api/v1'
+  : 'https://purple-fabric-redirector-backend.vercel.app/api/v1';
 
 const API_BASE_URL = (import.meta.env.VITE_ENTERPRISEGPT_API_BASE_URL || DEFAULT_API_BASE_URL).replace(/\/+$/, '');
 
