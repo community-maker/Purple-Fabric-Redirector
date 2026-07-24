@@ -39,7 +39,12 @@ export const env = {
   nodeEnv: parsed.data.NODE_ENV,
   port: parsed.data.PORT,
   apiPrefix: parsed.data.API_PREFIX,
-  corsOrigins: parsed.data.CORS_ORIGIN.split(',').map((origin) => origin.trim()),
+  corsOrigins: Array.from(
+    new Set([
+      ...parsed.data.CORS_ORIGIN.split(',').map((origin) => origin.trim()).filter(Boolean),
+      'https://purple-fabric-redirector.vercel.app',
+    ]),
+  ),
   purpleFabric: {
     endpoint: parsed.data.PURPLE_FABRIC_ENDPOINT.replace(/\/+$/, ''),
     webBaseUrl: deriveWebBaseUrl(parsed.data.PURPLE_FABRIC_ENDPOINT, parsed.data.PURPLE_FABRIC_WEB_BASE_URL),
