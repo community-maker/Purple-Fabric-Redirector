@@ -364,11 +364,13 @@ export default function App() {
       <div className="mx-auto flex min-h-full w-full max-w-7xl flex-col px-5 py-8 sm:px-8 lg:px-10">
         <header className="flex flex-col gap-6 border-b border-ink-900/10 pb-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-3">
-              <div className="grid h-9 w-9 place-items-center rounded-lg bg-pine-700 text-white shadow-glow">
-                <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="1.8">
-                  <path d="M12 3 5 5.8v5.4c0 4.4 3 8.1 7 9.3 4-1.2 7-4.9 7-9.3V5.8L12 3Z" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="flex h-12 items-center rounded-xl bg-ink-900 px-4 shadow-soft">
+                <img
+                  src="/idcube-logo.svg"
+                  alt="IDcube"
+                  className="h-8 w-auto"
+                />
               </div>
               <p className="text-sm font-semibold uppercase tracking-[0.12em] text-pine-700">Purple Fabric Workspace</p>
             </div>
